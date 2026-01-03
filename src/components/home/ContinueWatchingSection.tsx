@@ -450,7 +450,10 @@ const ContinueWatchingSection = React.forwardRef<ContinueWatchingRef>((props, re
           // Skip movies that are already watched on Trakt
           if (group.type === 'movie') {
             const watchedSet = await traktMoviesSetPromise;
-            if (watchedSet.has(group.id)) {
+            const imdbId = group.id.startsWith('tt')
+              ? group.id
+              : `tt${group.id}`;
+            if (watchedSet.has(imdbId)) {
               // Optional: sync local store to watched to prevent reappearance
               try {
                 await storageService.setWatchProgress(group.id, 'movie', {
