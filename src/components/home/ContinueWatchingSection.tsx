@@ -1147,7 +1147,6 @@ const ContinueWatchingSection = React.forwardRef<ContinueWatchingRef>((props, re
           padding: isTV ? 16 : isLargeTablet ? 14 : isTablet ? 12 : 12
         }
       ]}>
-        <View style={styles.titleRow}>
           {(() => {
             const isUpNext = item.type === 'series' && item.progress === 0;
             return (
